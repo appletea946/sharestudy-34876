@@ -1,0 +1,12 @@
+.user-join-groups{
+  height: 200px;
+  overflow: scroll;
+  padding: 10px;
+}
+
+.user-join-group{
+  width: 80%;
+  height: 50px;
+  margin: 10px auto;
+  display: flex;
+}

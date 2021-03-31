@@ -1,0 +1,17 @@
+#article-title{
+  font-size: 20px;
+}
+
+#search-result{
+  position: absolute;
+}
+
+.child{
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.child+.child{
+  border-top: 3px dotted gray;
+  }

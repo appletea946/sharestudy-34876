@@ -1,0 +1,42 @@
+<%= render partial: "/shared/header" %>
+
+<div class="main-flame">
+  <div class="app-description">
+    この場所は、自分が学習した内容を記録したり<br>
+    誰かの質問に答えたりして<br>
+    アウトプットをするための場所です
+  </div>
+
+  <div class="article-index">
+    <h2 class="article-index-title">投稿記事一覧</h2>
+    
+    <%= render partial: "shared/search_form" %>
+    <div class="slider">
+      <div class="slide-set">
+        <div class="articles slide">
+          <%= render partial: "shared/article", collection: @articles %>
+        </div>
+      </div>
+    </div>
+    <% if @articles.count > 12 %>
+      <div class="btns">
+        <button id="prev-btn" class="slide-btn">前へ</button>
+        <button id="next-btn" class="slide-btn">次へ</button>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="article-index">
+    <h2 class="article-index-title">お気に入り数TOP12</h2>
+
+    <ul class="articles">
+      <%= render partial: "shared/article", collection: @rank_like_articles %>
+    </ul>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+<%= link_to "作成", new_article_path, class: "right-btn" %>
+<% end %>
+
+<%= render partial: "/shared/footer" %>

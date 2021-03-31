@@ -1,0 +1,31 @@
+<div class="user-info-left">
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, class: "user-image" %>
+  <% else %>
+    <%= image_tag "random#{@user.id % 5}.png", class: "user-image" %>
+  <% end %>
+  <div class="user-info-name"><%= link_to @user.nickname, user_path(@user.id) %></div>
+
+  <%= render partial: "shared/user_like", locals: { user: @user } %>
+  
+  <div class="likes-box">
+    <div class="article-like-num"><span class="yellow">☆</span><%= @like_articles.count %></div>
+    ：
+    <div class="user-like-num"><span class="red">
+    <% if @like.empty? %>
+    ♡
+    <% else %>
+    ❤️
+    <% end %>
+    </span><%= @likes.count %></div>
+  </div>
+  <div class="article-count">記事投稿数：<%= @user.articles.count %></div>
+  <%# <h3 class="tag-index-title">タグ一覧</h3>
+  <ul class="tag-index">
+    <li class="tag">Ruby</li>
+    <li class="tag">Rails</li>
+    <li class="tag">HTML</li>
+    <li class="tag">CSS</li>
+    <li class="tag">Javascript</li>
+  </ul> %>
+</div>

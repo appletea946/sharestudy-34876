@@ -1,0 +1,7 @@
+<% if current_user != user %>
+  <% if @like.empty? %>
+    <%= link_to "お気に入り登録",  user_like_users_path(user.id), method: :post, class: "user-like-box" %>
+  <% else %>
+    <%= link_to "お気に入り解除", user_like_user_path(user.id, current_user.id), method: :delete, class: "user-like-box" %>
+  <% end %>
+<% end %>

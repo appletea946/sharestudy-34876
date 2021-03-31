@@ -1,0 +1,24 @@
+<div class="header">
+  <div class="left-header">
+    <h1 class="app-title">
+      <%= link_to "ShareStudy", root_path, class: "head-content title" %>
+    </h1>
+  </div>
+  <div class="right-header">
+    <% if user_signed_in? %>
+      <div class="header-login">
+        <%= link_to current_user.nickname, user_path(current_user.id), class: "head-content" %>
+      </div>
+      <div class="header-registration">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "head-content", id: "log_out" %>
+      </div>
+    <% else %>
+      <div class="header-login">
+        <%= link_to "ログイン", new_user_session_path, class: "head-content" %>
+      </div>
+      <div class="header-registration">
+        <%= link_to "新規登録", new_user_registration_path, class: "head-content" %>
+      </div>
+    <% end %>
+  </div>
+</div>

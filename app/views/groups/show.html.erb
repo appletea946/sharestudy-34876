@@ -1,0 +1,39 @@
+<%= render partial: "/shared/header" %>
+
+<div class="main-flame">
+  <h2 class="group-title"><%= @group.name %>グループ</h2>
+  <div class="user-info">
+    <%= render partial: "shared/user_info" %>
+    
+    <div class="group-index">
+      <h2 class="head-text">メンバー一覧</h2>
+      <ul class="group-members">
+
+        <%= render partial: "shared/group_member", collection: @group.users, as: "user" %>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="article-index">
+    <h2 class="article-index-title"><%= @group.name %>グループの投稿記事一覧</h2>
+    <div class="slider">
+      <div class="slide-set">
+        <div class="articles slide">
+          <%= render partial: "shared/article", collection: @articles %>
+        </div>
+      </div>
+    </div>
+    <% if @articles.count > 12 %>
+      <div class="btns">
+        <button id="prev-btn" class="slide-btn">前へ</button>
+        <button id="next-btn" class="slide-btn">次へ</button>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "戻る", groups_path, class: "left-btn" %>
+<%= link_to "作成", new_article_path, class: "right-btn" %>
+
+<%= render partial: "/shared/footer" %>

@@ -1,0 +1,52 @@
+<%= render partial: "/shared/header" %>
+
+<%= form_with model: @article, url: articles_path, class: 'article-post main-flame', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      記事作成
+    </h1>
+  </div>
+
+  <%= render 'shared/error_messages', model: f.object %>
+  
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">タイトル</label>
+    </div>
+    <%= f.text_field :title, class:"input-default", id:"article-title", size: "58x1", autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">タグ</label>
+    </div>
+    <%= f.text_field :name, class:"input-default", id:"article-tag", size: "20x1" %>
+    <div id="search-result">
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">グループ</label>
+    </div>
+    <%= f.collection_select :group_id, @groups, :id, :name, {prompt: "グループを選択"}, {class: "input-default"} %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">記事内容</label>
+    </div>
+    <%= f.text_area :content, class:"input-default text-area", id:"content", size: "70x11" %>
+  </div>
+  
+  <div class='register-btn'>
+    <%= f.submit "投稿" ,class:"right-btn" %>
+  </div>
+</div>
+<% end %>
+
+<%= link_to "戻る", root_path, class: "left-btn" %>
+
+<%= render partial: "/shared/footer" %>

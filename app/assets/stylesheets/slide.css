@@ -1,0 +1,35 @@
+.slider .slide {
+  width: 1000px;
+  float: left;
+  box-sizing: border-box;
+}
+
+.slider {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto 20px;
+  width: 1000px;
+  height: 550px;
+}
+
+.slide-set {
+  position: absolute;
+}
+
+.btns{
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slide-btn{
+  width: 45%;
+  box-sizing: border-box;
+  font-size: 22px;
+  line-height: 22px;
+  padding: 10px;
+  background-color: #333333;
+  color: #e6e6e6;
+  
+}

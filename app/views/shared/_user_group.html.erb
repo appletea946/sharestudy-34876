@@ -1,0 +1,11 @@
+<div class="user-join-group">
+  <% if group.users[0].image.attached? %>
+    <%= image_tag group.users[0].image, class: "group-author-image" %>
+  <% else %>
+    <%= image_tag "random#{group.users[0].id % 5}.png", class: "group-author-image" %>
+  <% end %>
+  <div class="name-and-author">
+    <div class="group-name"><%= link_to group.name, group_path(group.id) %></div>
+    <div class="group-author"><%= group.users[0].nickname %><span class="small">作成</span></div>
+  </div>
+</div>

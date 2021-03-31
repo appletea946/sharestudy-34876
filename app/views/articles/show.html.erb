@@ -1,0 +1,64 @@
+<%= render partial: "/shared/header" %>
+
+<div class="main-flame">
+  <div class="user-info">
+
+    <%= render partial: "shared/user_info" %>
+    
+    <div class="article-show">
+      <div class="article-show-header">
+        <div class="article-show-title"><%= @article.title %></div>
+        <div class="article-show-tags">
+          <% @article.tags.each do |tag| %>
+            #<%= tag.name %>
+          <% end %>
+        </div>
+      </div>
+      <div class="article-show-content">
+        <%# simple_format(h(@article.content)) %>
+        <%= markdown(h(@article.content)) %>
+        <div class="this-article-like-num">お気に入り数<span class="yellow">★</span><%= @this_article_likes.count %></div>
+        <% if current_user != @user %>
+          <% if @like_article.empty? %>
+            <%= link_to article_like_articles_path(@article.id), method: :post, class: "article-like-btn" do %>
+                お気に入り登録<span class="yellow">☆</span>
+            <% end %>
+          <% else %>
+            <%= link_to article_like_article_path(@article.id), method: :delete, class: "article-like-btn" do %>
+                お気に入り削除<span class="yellow">★</span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment-index">
+    <ul class="comments">
+      <%= form_with model: @comment, url: article_comments_path(@article.id), class: 'comment-form', local: true do |f| %>
+        <div class='form-wrap'>
+          <div class='form-header'>
+            <h1 class='form-header-text'>
+              コメント
+            </h1>
+          </div>
+
+          <div class="form-group">
+            <%= f.text_area :content, class:"input-default text-area", id:"content", size: "70x3" %>
+          </div>
+          <div class='register-btn'>
+            <%= f.submit "送信", class: "comment-btn" %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= render partial: "shared/comment", collection: @comments %>
+    </ul>
+  </div>
+
+</div>
+<% if current_user == @article.user %>
+<%= link_to "編集", edit_article_path(@article.id), class: "right-btn" %>
+<% end %>
+
+<%= render partial: "/shared/footer" %>

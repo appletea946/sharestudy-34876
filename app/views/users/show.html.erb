@@ -1,0 +1,46 @@
+<%= render partial: "/shared/header" %>
+
+<div class="main-flame">
+  <div class="user-info">
+
+    <%= render partial: "shared/user_info" %>
+    
+    <div class="user-info-right">
+      <div class="user-description" id="user-description">
+        <%# simple_format(h(@user.introduction)) %>
+        <%= markdown(h(@user.introduction)) %>
+      </div>
+      <div class="user-sub-contents">
+        <div class="user-sub-content">
+          <h3 class="user-sub-content-title">お気に入りユーザー</h3>
+          <ul class="user-like-members">
+            <%= render partial: "shared/like_member", collection: @like_users, as: "user" %>
+          </ul>
+        </div>
+        <div class="user-sub-content">
+          <%= link_to groups_path do %>
+          <h3 class="user-sub-content-title">所属グループ</h3>
+          <% end %>
+          <div class="user-join-groups">
+            <%= render partial: "shared/user_group", collection: @groups, as: "group" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-index">
+    <h2 class="article-index-title">投稿記事一覧</h2>
+    
+    <%= render partial: "/shared/search_form_in_user" %>
+
+    <ul class="articles">
+      <%= render partial: "shared/article", collection: @articles %>
+    </ul>
+  </div>
+</div>
+<% if current_user == @user %>
+<%= link_to "編集", edit_user_path(@user.id), class: "right-btn" %>
+<% end %>
+
+<%= render partial: "/shared/footer" %>

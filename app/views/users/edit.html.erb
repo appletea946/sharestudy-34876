@@ -1,0 +1,42 @@
+<%= render partial: "/shared/header" %>
+
+<%= form_with model: current_user, class: 'registration-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      編集
+    </h1>
+  </div>
+
+  <%= render 'shared/error_messages', model: f.object %>
+  
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">ニックネーム</label>
+    </div>
+    <%= f.text_field :nickname, class:"input-default", id:"nickname", autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">ユーザー画像</label>
+    </div>
+    <%= f.file_field :image, id:"image" %>
+  </div>
+  
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">自己紹介</label>
+    </div>
+    <%= f.text_area :introduction, class:"input-default text-area", id:"introduction", size: "50x10" %>
+  </div>
+  
+  <div class='register-btn'>
+    <%= f.submit "登録" ,class:"right-btn" %>
+  </div>
+</div>
+<% end %>
+
+<%= link_to "戻る", user_path, class: "left-btn" %>
+
+<%= render partial: "/shared/footer" %>
