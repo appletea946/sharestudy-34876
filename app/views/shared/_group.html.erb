@@ -2,7 +2,7 @@
   <% if group.users[0].image.attached? %>
     <%= image_tag group.users[0].image, class: "group-author-image" %>
   <% else %>
-    <%= image_tag "random#{group.users[0].id % 5}.png", class: "group-author-image" %>
+    <%= image_tag "random#{group.users[0].id % 7}.png", class: "group-author-image" %>
   <% end %>
   <div class="name-and-author">
     <div class="group-name"><%= link_to group.name, sign_up_groups_path(group.id) %></div>

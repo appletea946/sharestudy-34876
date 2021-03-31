@@ -4,7 +4,7 @@
     <% if article.user.image.attached? %>
       <%= image_tag article.user.image, class: "article-user-image" %>
     <% else %>
-      <%= image_tag "random#{article.user.id % 5}.png", class: "article-user-image" %>
+      <%= image_tag "random#{article.user.id % 7}.png", class: "article-user-image" %>
     <% end %>
     <div class="title-name-date">
       <div class="article-title"><%= article.title %></div>
