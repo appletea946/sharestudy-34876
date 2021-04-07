@@ -1,12 +1,12 @@
 <% if current_user != user && user_signed_in? %>
   <% if @like.empty? %>
-    <%= form_with model: @users_relations, url: user_like_users_path(user.id), local: true do |f| %>
+    <%= form_with model: @users_relations, url: user_like_users_path(user.id), id: "user-form", local: true do |f| %>
       <%= f.submit "お気に入り登録", class: "user-like-box", id: "user-like" %>
       <%= f.hidden_field :give_user, value: current_user.id %>
       <%= f.hidden_field :receive_user, value: user.id %>
     <% end %>
   <% else %>
-    <%= form_with model: @users_relations, url: user_like_user_path(user.id), method: :delete, local: true do |f| %>
+    <%= form_with model: @users_relations, url: user_like_user_path(user.id), method: :delete, id: "user-form", local: true do |f| %>
       <%= f.submit "お気に入り解除", class: "user-like-box", id: "user-not-like" %>
       <%= f.hidden_field :give_user, value: current_user.id %>
       <%= f.hidden_field :receive_user, value: user.id %>

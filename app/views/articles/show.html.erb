@@ -20,14 +20,14 @@
         <div class="this-article-like-num">お気に入り数<span class="yellow">★</span><%= @this_article_likes.count %></div>
         <% if current_user != @user && user_signed_in? %>
           <% if @like_article.empty? %>
-            <%= form_with model: @user_article_relations, url: article_like_articles_path(@article.id), local: true do |f| %>
-              <%= f.submit "お気に入り登録", id: "article-like", class: "article-like-btn" %><span class="yellow">☆</span>
+            <%= form_with model: @user_article_relations, url: article_like_articles_path(@article.id), id: "article-form", local: true do |f| %>
+              <%= f.submit "お気に入り登録", id: "article-like", class: "article-like-btn" %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :article_id, value: @article.id %>
             <% end %>
           <% else %>
-            <%= form_with model: @user_article_relations, url: article_like_article_path(@article.id), method: :delete, local: true do |f| %>
-              <%= f.submit "お気に入り解除", id: "article-not-like", class: "article-like-btn" %><span class="yellow">★</span>
+            <%= form_with model: @user_article_relations, url: article_like_article_path(@article.id), method: :delete, id: "article-form", local: true do |f| %>
+              <%= f.submit "お気に入り解除", id: "article-not-like", class: "article-like-btn" %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :article_id, value: @article.id %>
             <% end %>
