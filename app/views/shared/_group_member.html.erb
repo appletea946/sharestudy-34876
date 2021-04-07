@@ -2,7 +2,7 @@
   <% if user.image.attached? %>
     <%= image_tag user.image, class: "member-image" %>
   <% else %>
-    <%= image_tag "random#{user.id 7}.png", class: "member-image" %>
+    <%= image_tag "random#{user.id % 7}.png", class: "member-image" %>
   <% end %>
   <div class="member-name"><%= link_to user.nickname, user_path(user.id) %></div>
 </li>

@@ -10,6 +10,8 @@ require("channels")
 require("jquery")
 require("../tag")
 require("../slide")
+require("../like_article")
+require("../like_user")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
