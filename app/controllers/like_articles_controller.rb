@@ -3,14 +3,14 @@ class LikeArticlesController < ApplicationController
   before_action :move_to_user_show, only: [:create, :destroy]
 
   def create
-    LikeArticle.create(user_id: current_user.id, article_id: params[:article_id])
-    redirect_to article_path(params[:article_id])
+    like = LikeArticle.create(user_id: current_user.id, article_id: params[:article_id])
+    render json:{ like: like }
   end
 
   def destroy
-    LikeArticle.find_by_sql(['DELETE FROM like_articles WHERE user_id = :current_user_id AND article_id = :article_id',
+    like = LikeArticle.find_by_sql(['DELETE FROM like_articles WHERE user_id = :current_user_id AND article_id = :article_id',
                              { current_user_id: current_user.id, article_id: params[:article_id] }])
-    redirect_to article_path(params[:article_id])
+    render json:{ like: like }
   end
 
   private
