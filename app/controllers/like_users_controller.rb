@@ -4,13 +4,13 @@ class LikeUsersController < ApplicationController
 
   def create
     like = LikeUser.create(give_user: current_user.id, receive_user: params[:user_id])
-    render json:{ like: like }
+    render json: { like: like }
   end
 
   def destroy
     like = LikeUser.find_by_sql(['DELETE FROM like_users WHERE give_user = :current_user_id AND receive_user = :receive_user',
-                          { current_user_id: current_user.id, receive_user: params[:user_id] }])
-    render json:{ like: like }
+                                 { current_user_id: current_user.id, receive_user: params[:user_id] }])
+    render json: { like: like }
   end
 
   private

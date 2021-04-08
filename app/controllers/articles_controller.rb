@@ -44,10 +44,10 @@ class ArticlesController < ApplicationController
                                              ])
     @this_article_likes = LikeArticle.find_by_sql(['SELECT * FROM like_articles WHERE article_id = :article_id',
                                                    { article_id: @article.id }])
-    
+
     if user_signed_in?
-      @users_relations = LikeUser.new(give_user: current_user.id, receive_user: @user.id);
-      @user_article_relations = LikeArticle.new();
+      @users_relations = LikeUser.new(give_user: current_user.id, receive_user: @user.id)
+      @user_article_relations = LikeArticle.new
     end
   end
 
