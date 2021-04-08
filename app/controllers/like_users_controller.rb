@@ -3,14 +3,14 @@ class LikeUsersController < ApplicationController
   before_action :move_to_user_show, only: [:create, :destroy]
 
   def create
-    LikeUser.create(give_user: current_user.id, receive_user: params[:user_id])
-    redirect_to user_path(params[:user_id])
+    like = LikeUser.create(give_user: current_user.id, receive_user: params[:user_id])
+    render json:{ like: like }
   end
 
   def destroy
-    LikeUser.find_by_sql(['DELETE FROM like_users WHERE give_user = :current_user_id AND receive_user = :receive_user',
+    like = LikeUser.find_by_sql(['DELETE FROM like_users WHERE give_user = :current_user_id AND receive_user = :receive_user',
                           { current_user_id: current_user.id, receive_user: params[:user_id] }])
-    redirect_to user_path(params[:user_id])
+    render json:{ like: like }
   end
 
   private

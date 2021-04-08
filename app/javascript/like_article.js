@@ -17,8 +17,9 @@ function like_article(){
     XHR.send(formData);
     XHR.onload = () => {
       const article_show_content = document.getElementById("article-show-content");
+      const token = document.getElementsByName("authenticity_token")[1].value;
       const item = XHR.response.like;
-      const html = `<form id="article-form" action="/articles/${item.article_id}/like_articles/${item.user_id}" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="delete"><input type="hidden" name="authenticity_token" value="JacW5UVoDOqgUJLNmS3K49U3hDuPwPocISTBDRNIg7GNeXIVTrevC5m3cL+a8EoXDTO6sW8Nr/OwSxTkROBPyg==">
+      const html = `<form id="article-form" action="/articles/${item.article_id}/like_articles/${item.user_id}" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="delete"><input type="hidden" name="authenticity_token" value="${token}">
       <input type="submit" name="commit" value="お気に入り解除" id="article-not-like" class="article-like-btn" data-disable-with="お気に入り解除">
       <input value="${item.user_id}" type="hidden" name="like_article[user_id]" id="like_article_user_id">
       <input value="${item.article_id}" type="hidden" name="like_article[article_id]" id="like_article_article_id">
@@ -44,8 +45,8 @@ function like_article(){
     XHR.send(formData);
     XHR.onload = () => {
       const article_show_content = document.getElementById("article-show-content");
-      const item = XHR.response.like;
-      const html = `<form id="article-form" action="/articles/${article_id}/like_articles" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="Iy/pGJ23lYJV+mOwHeXzHmI1CKcIURCmvPzk6Bfb7W6L8Y3olmg2Y2wdgcIeOHPqujE2LeicRUktkzEBQHMhFQ==">
+      const token = document.getElementsByName("authenticity_token")[1].value;
+      const html = `<form id="article-form" action="/articles/${article_id}/like_articles" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="${token}">
       <input type="submit" name="commit" value="お気に入り登録" id="article-like" class="article-like-btn" data-disable-with="お気に入り登録">
       <input value="${like_article_user_id}" type="hidden" name="like_article[user_id]" id="like_article_user_id">
       <input value="${article_id}" type="hidden" name="like_article[article_id]" id="like_article_article_id">
