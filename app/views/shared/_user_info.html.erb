@@ -4,7 +4,7 @@
   <% else %>
     <%= image_tag "random#{@user.id % 7}.png", class: "user-image" %>
   <% end %>
-  <div class="user-info-name"><%= link_to @user.nickname, user_path(@user.id) %></div>
+  <div class="user-info-name" id="user-info-name"><%= link_to @user.nickname, user_path(@user.id) %></div>
 
   <%= render partial: "shared/user_like", locals: { user: @user } %>
   
@@ -17,15 +17,7 @@
     <% else %>
     ❤️
     <% end %>
-    </span><%= @likes.count %></div>
+    </span><span id="user-like-count"><%= @likes.count %></span></div>
   </div>
   <div class="article-count">記事投稿数：<%= @user.articles.count %></div>
-  <%# <h3 class="tag-index-title">タグ一覧</h3>
-  <ul class="tag-index">
-    <li class="tag">Ruby</li>
-    <li class="tag">Rails</li>
-    <li class="tag">HTML</li>
-    <li class="tag">CSS</li>
-    <li class="tag">Javascript</li>
-  </ul> %>
 </div>

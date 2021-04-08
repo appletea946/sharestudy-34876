@@ -1,7 +1,7 @@
 <%= render partial: "/shared/header" %>
 
 <div class="main-flame">
-  <div class="user-info">
+  <div class="user-info" id="user-info">
 
     <%= render partial: "shared/user_info" %>
     
@@ -14,18 +14,22 @@
           <% end %>
         </div>
       </div>
-      <div class="article-show-content">
+      <div class="article-show-content" id="article-show-content">
         <%# simple_format(h(@article.content)) %>
         <%= markdown(h(@article.content)) %>
-        <div class="this-article-like-num">お気に入り数<span class="yellow">★</span><%= @this_article_likes.count %></div>
-        <% if current_user != @user %>
+        <div class="this-article-like-num">お気に入り数<span class="yellow">★</span><span id="article-like-count"><%= @this_article_likes.count %></span></div>
+        <% if current_user != @user && user_signed_in? %>
           <% if @like_article.empty? %>
-            <%= link_to article_like_articles_path(@article.id), method: :post, class: "article-like-btn" do %>
-                お気に入り登録<span class="yellow">☆</span>
+            <%= form_with model: @user_article_relations, url: article_like_articles_path(@article.id), id: "article-form", local: true do |f| %>
+              <%= f.submit "お気に入り登録", id: "article-like", class: "article-like-btn" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :article_id, value: @article.id %>
             <% end %>
           <% else %>
-            <%= link_to article_like_article_path(@article.id), method: :delete, class: "article-like-btn" do %>
-                お気に入り削除<span class="yellow">★</span>
+            <%= form_with model: @user_article_relations, url: article_like_article_path(@article.id), method: :delete, id: "article-form", local: true do |f| %>
+              <%= f.submit "お気に入り解除", id: "article-not-like", class: "article-like-btn" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :article_id, value: @article.id %>
             <% end %>
           <% end %>
         <% end %>

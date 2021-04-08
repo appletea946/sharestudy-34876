@@ -1,5 +1,14 @@
 .user-like-box{
   text-align: center;
+  width: 100%;
+  border:none;
+  font-size: 20px;
+  background-color: inherit;
+}
+
+.user-like-box:hover{
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 .user-like-submit{

@@ -11,6 +11,8 @@ class UsersController < ApplicationController
                                     ])
     @groups = @user.groups
     set_like_relations
+
+    @users_relations = LikeUser.new(give_user: current_user.id, receive_user: @user.id) if user_signed_in?
   end
 
   def edit
