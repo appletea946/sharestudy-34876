@@ -135,9 +135,9 @@ password  bbb111<br>
 
 ### tags
 
-| Column | Type | Option |
-| ------ | ---- | ------ |
-| name   |      |        |
+| Column | Type   | Option      |
+| ------ | ------ | ----------- |
+| name   | string | null: false |
 
 #### association
 - has_many :article_tags
@@ -155,10 +155,10 @@ password  bbb111<br>
 
 ### like_user
 
-| Column       | Type       | Option                                         |
-| ------------ | ---------- | ---------------------------------------------- |
-| give_user    | references | null: false, foreign_key: { to_table: "users"} |
-| receive_user | references | null: false, foreign_key: { to_table: "users"} |
+| Column       | Type    | Option      |
+| ------------ | ------- | ----------- |
+| give_user    | integer | null: false |
+| receive_user | integer | null: false |
 
 #### association
 - has_many: user
