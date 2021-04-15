@@ -65,3 +65,16 @@
   text-align: center;
   line-height: 50px;
 }
+
+.test-login{
+  position: absolute;
+  right: 30px;
+  font-size: 20px;
+}
+
+.user-a{
+  bottom: 130px;
+}
+.user-b{
+  bottom: 80px;
+}
