@@ -127,6 +127,10 @@
   line-height: 50px;
 }
 
+.user-join-groups{
+  position: relative;
+}
+
 .user-groups{
   height: 200px;
   overflow: scroll;
@@ -143,6 +147,16 @@
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+}
+
+.group-btn{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: #e6e6e6;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .article-index{
