@@ -8,8 +8,8 @@ sharestudy
 
 
 ## URL
-https://sharestudy-34876.herokuapp.com/
-*ログイン画面右下にあるボタンからテストログインが可能です
+https://sharestudy-34876.herokuapp.com/<br>
+*ログイン画面右下にあるボタンからテストログインが可能です<br>
 *記事投稿画面右下にあるサンプル記事作成を押すと、タイトル・タグ・記事内容が自動で入力されます。
 
 ## テスト用アカウント
