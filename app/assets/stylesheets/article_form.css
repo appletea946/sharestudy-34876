@@ -14,4 +14,11 @@
 
 .child+.child{
   border-top: 3px dotted gray;
-  }
+}
+
+#input-sample{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 20px;
+}
