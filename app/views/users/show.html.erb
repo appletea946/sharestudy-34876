@@ -18,10 +18,9 @@
           </ul>
         </div>
         <div class="user-sub-content">
-          <%= link_to groups_path do %>
           <h3 class="user-sub-content-title">所属グループ</h3>
-          <% end %>
           <div class="user-join-groups">
+            <%= link_to "全グループ一覧画面へ",groups_path, class: "group-btn" %>
             <%= render partial: "shared/user_group", collection: @groups, as: "group" %>
           </div>
         </div>
@@ -42,5 +41,6 @@
 <% if current_user == @user %>
 <%= link_to "編集", edit_user_path(@user.id), class: "right-btn" %>
 <% end %>
+
 
 <%= render partial: "/shared/footer" %>
